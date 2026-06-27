@@ -1,0 +1,23 @@
+.navBarContainer {
+  width: 100%;
+  max-width: 1232px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linksContainerNavBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+
+  a {
+    font-family: var(--font-family-principal);
+    font-size: 14px;
+    color: var(--neutral-600);
+    text-decoration: none;
+  }
+}

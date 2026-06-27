@@ -1,0 +1,54 @@
+.imageContainerHeroSection {
+  position: relative;
+  width: 100%;
+  max-width: 712px;
+}
+
+.imageHeroSection {
+  position: absolute;
+  bottom: -94px;
+  right: 0;
+  z-index: 2;
+}
+
+.aroHeroImage {
+  position: absolute;
+  fill: var(--white-laranja-02);
+  top: 66px;
+  z-index: 0;
+}
+
+.textOnAroContainer {
+  mask-image: linear-gradient(
+    to top,
+    transparent 50%,
+    black 100%,
+
+    transparent
+  );
+  height: 509px;
+  position: absolute;
+  z-index: 1;
+  top: 80px;
+  left: 14px;
+}
+
+.textOnAroHeroSection {
+  animation: rotateText 30s linear infinite;
+}
+
+.baseOnAro {
+  position: absolute;
+  bottom: 0;
+  left: 134px;
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

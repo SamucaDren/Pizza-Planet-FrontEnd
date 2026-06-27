@@ -1,0 +1,28 @@
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 6px 6px 17px;
+  gap: 15px;
+  width: fit-content;
+
+  background: var(--laranja-principal);
+  border-radius: 80px;
+
+  font-family: var(--font-family-principal);
+  color: var(--neutral-000);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.iconButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+
+  background: var(--white-laranja-02);
+  border-radius: 40px;
+}

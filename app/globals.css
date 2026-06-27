@@ -1,13 +1,54 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color styles */
+  --laranja-principal: rgba(254, 77, 20, 1);
+
+  --white-laranja-01: rgba(255, 104, 55, 1);
+  --white-laranja-02: rgba(255, 133, 92, 1);
+  --white-laranja-03: rgba(255, 161, 129, 1);
+  --white-laranja-04: rgba(255, 191, 168, 1);
+  --white-laranja-05: rgba(255, 221, 208, 1);
+  --white-laranja-06: rgba(255, 251, 250, 1);
+
+  --dark-laranja-01: rgba(217, 60, 6, 1);
+  --dark-laranja-02: rgba(179, 45, 0, 1);
+  --dark-laranja-03: rgba(140, 32, 0, 1);
+  --dark-laranja-04: rgba(102, 20, 0, 1);
+  --dark-laranja-05: rgba(64, 11, 0, 1);
+  --dark-laranja-06: rgba(26, 4, 0, 1);
+
+  --neutral-700: rgba(18, 11, 8, 1);
+  --neutral-600: rgba(103, 82, 75, 1);
+  --neutral-500: rgba(153, 130, 122, 1);
+  --neutral-400: rgba(204, 181, 173, 1);
+  --neutral-300: rgba(217, 200, 195, 1);
+  --neutral-200: rgba(242, 231, 228, 1);
+  --neutral-100: rgba(252, 249, 248, 1);
+  --neutral-000: rgba(255, 255, 255, 1);
+
+  /* Text-size styles */
+  --heading--64--medium: 64px;
+  --heading--40--semi: 40px;
+  --heading--32--semi: 32px;
+  --heading--24--semi: 24px;
+  --heading--18-semi: 18px;
+  --body--18--medium: 18px;
+  --body--16--semi: 16px;
+  --body--16--medium: 16px;
+  --body--14--semi: 14px;
+  --body--14--medium: 14px;
+
+  --font-family-principal: "Manrope";
+  --font-family-display: "Mochiy Pop One";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.tag {
+  font-family: var(--font-family-display);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  text-transform: uppercase;
+
+  color: var(--white-laranja-02);
 }
 
 html {
@@ -23,27 +64,13 @@ body {
 body {
   min-height: 100%;
   display: flex;
+  color: black;
   flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-principal);
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
