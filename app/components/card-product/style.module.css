@@ -1,0 +1,121 @@
+.cardProductCotainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 324px 8px 8px 8px;
+
+  width: 100%;
+  min-width: 520px;
+  height: fit-content;
+
+  background: var(--dark-laranja-05);
+  border-radius: 24px;
+  overflow: hidden;
+
+  transition: all ease 0.4s;
+}
+
+.cardProductCotainerNoMain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+
+  width: 100%;
+  min-width: 240px;
+  height: 400px;
+
+  background: var(--white-laranja-04);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all ease 0.4s;
+  opacity: 80%;
+
+  .headerContent {
+    width: 504px;
+    position: absolute;
+    opacity: 1;
+    transform: translateY(500px);
+  }
+}
+
+.headerContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  gap: 16px;
+
+  width: 100%;
+  height: fit-content;
+
+  background: var(--neutral-000);
+  border-radius: 16px;
+  z-index: 1;
+  overflow: hidden;
+  transition: all ease 0.4s;
+
+  h3 {
+    width: 100%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+
+    color: var(--netral-700);
+  }
+
+  p {
+    width: 100%;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+
+    color: var(--neutral-600);
+  }
+}
+
+.imageProductCard {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+
+  mask-image: radial-gradient(
+    100% 100% at 50% 0%,
+    black 50%,
+    rgba(115, 115, 115, 0) 100%
+  );
+}
+
+.priceContainer {
+  display: flex;
+
+  align-items: center;
+  padding: 24px 32px 32px 24px;
+  gap: 16px;
+
+  position: absolute;
+
+  right: 0px;
+  bottom: 0px;
+
+  background: var(--neutral-200);
+  border: 2px solid var(--white-laranja-05);
+  border-radius: 32px 0px 0px 0px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+
+  color: var(--white-laranja-01);
+}

@@ -7,16 +7,19 @@ export default function NavBar() {
   return (
     <nav className={styles.navBarContainer}>
       <Image src="/logo.svg" width={185} height={34} alt={""} />
-      <div className={styles.linksContainerNavBar}>
+      {/*       <div className={styles.linksContainerNavBar}>
         <Link href="/">Exemplo</Link>
         <Link href="/">Exemplo</Link>
         <Link href="/">Exemplo</Link>
-      </div>
+      </div>*/}
+
       <Buttom
+        tagHtml="url"
         text="Fazer pedido"
         ariaLabel="Relizar pedido"
-        type="primary"
-        tagHtml="url"
+        type="secondary"
+        direction="to-right"
+        withSeta={false}
         href="/"
       />
     </nav>

@@ -58,3 +58,38 @@
 
   color: var(--neutral-600);
 }
+
+@media (max-width: 768px) {
+  .heroSectionContainer {
+    gap: 48px;
+
+    padding: 16px 24px 0 24px;
+    background: linear-gradient(
+      to bottom,
+      var(--white-laranja-06) 0%,
+      var(--white-laranja-05) 100%
+    );
+  }
+  .contentHeroContainer {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .headlineHeroSection {
+    font-size: 40px;
+    text-align: center;
+  }
+  .headerContainer {
+    gap: 16px;
+    width: 100%;
+    max-width: none;
+    padding-bottom: 0;
+    text-align: center;
+    align-items: center;
+  }
+
+  .subheadlineHeroSection {
+    font-size: 16px;
+    text-align: center;
+  }
+}

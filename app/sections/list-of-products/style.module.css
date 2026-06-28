@@ -1,0 +1,39 @@
+.productsSectionContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 40px;
+  gap: 56px;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerProducts {
+  width: 100%;
+  max-width: 816px;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  text-align: center;
+
+  h2 {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 120%;
+
+    letter-spacing: -0.03em;
+
+    color: var(--neutral-700);
+  }
+
+  p {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+
+    letter-spacing: -0.03em;
+
+    color: var(--neutral-600);
+  }
+}

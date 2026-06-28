@@ -16,6 +16,8 @@
   fill: var(--white-laranja-02);
   top: 66px;
   z-index: 0;
+  width: 1018px;
+  height: 509px;
 }
 
 .textOnAroContainer {
@@ -26,11 +28,13 @@
 
     transparent
   );
-  height: 509px;
+
   position: absolute;
   z-index: 1;
   top: 80px;
   left: 14px;
+  width: 986px;
+  height: auto;
 }
 
 .textOnAroHeroSection {
@@ -41,6 +45,9 @@
   position: absolute;
   bottom: 0;
   left: 134px;
+  fill: var(--white-laranja-04);
+  width: 744px;
+  height: 287px;
 }
 
 @keyframes rotateText {
@@ -50,5 +57,53 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .imageContainerHeroSection {
+    max-width: 400px;
+    position: relative;
+  }
+  .imageHeroSection {
+    position: relative;
+    width: 100%;
+    height: auto;
+    bottom: -16px;
+  }
+  .aroHeroImage {
+    top: auto;
+    bottom: -10vw;
+
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110vw;
+    height: auto;
+    z-index: 0;
+  }
+
+  .textOnAroContainer {
+    position: absolute;
+    top: auto;
+    bottom: -6vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 102vw;
+    height: 50vw;
+    mask-image: linear-gradient(to top, transparent 0%, black 100%);
+  }
+  .textOnAroHeroSection {
+    width: 100%;
+    height: auto;
+    top: 0;
+    animation: rotateText 30s linear infinite;
+  }
+  .baseOnAro {
+    position: absolute;
+    bottom: 0;
+    width: 82vw;
+    left: 50%;
+    transform: translateX(-50%);
+    height: auto;
   }
 }

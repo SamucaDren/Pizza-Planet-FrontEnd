@@ -25,6 +25,7 @@ export default function HeroSection() {
               type="primary"
               tagHtml="url"
               href="/"
+              direction="to-down"
             />
           </div>
           <HeroImage />

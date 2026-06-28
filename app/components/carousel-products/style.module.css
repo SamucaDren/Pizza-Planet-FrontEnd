@@ -1,0 +1,78 @@
+.productsContainer {
+  height: 550px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  left: 0;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.trackProductsCards {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+
+  width: 100%;
+  max-width: 1232px;
+}
+
+.containerButton {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  position: absolute;
+  width: 100%;
+  max-width: 1232px;
+
+  justify-content: space-between;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 2;
+
+  .previous {
+    position: absolute;
+    left: 0;
+  }
+  .next {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.maskProductsContainer {
+  max-width: 1232px;
+  mask-image: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0%,
+    #efefef 13.68%,
+    #aaaaaa 82.89%,
+    rgba(153, 153, 153, 0) 100%
+  );
+  transition: all 0.2s ease-in-out;
+}
+
+.maskProductsContainerFirst {
+  max-width: 1232px;
+  mask-image: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0%,
+    #efefef 13.68%,
+    #aaaaaa 82.89%,
+    rgba(153, 153, 153, 1) 100%
+  );
+}
+
+.maskProductsContainerEnd {
+  max-width: 1232px;
+  mask-image: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 1) 0%,
+    #efefef 13.68%,
+    #aaaaaa 82.89%,
+    rgba(153, 153, 153, 0) 100%
+  );
+}

@@ -3,17 +3,157 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 6px 6px 17px;
+  padding: 6px 6px 6px 24px;
   gap: 15px;
   width: fit-content;
 
-  background: var(--laranja-principal);
+  background-color: var(--laranja-principal);
   border-radius: 80px;
 
   font-family: var(--font-family-principal);
   color: var(--neutral-000);
   font-size: 18px;
   text-decoration: none;
+  outline: none;
+  border: none;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--white-laranja-02);
+    .iconButtonContainer {
+      background-color: var(--white-laranja-03);
+    }
+  }
+}
+
+.buttonSecondaryContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 6px 6px 24px;
+  gap: 15px;
+  width: fit-content;
+
+  background-color: transparent;
+  border-radius: 80px;
+
+  font-family: var(--font-family-principal);
+  color: var(--laranja-principal);
+  font-size: 18px;
+  text-decoration: none;
+  outline: none;
+  border: solid 2px var(--laranja-principal);
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--laranja-principal);
+    color: var(--neutral-000);
+    .iconButtonContainer {
+      background-color: var(--white-laranja-03);
+    }
+  }
+}
+
+.buttonContainerWithoutSeta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 24px;
+  width: fit-content;
+
+  background-color: var(--laranja-principal);
+  border-radius: 80px;
+
+  font-family: var(--font-family-principal);
+  color: var(--neutral-000);
+  font-size: 18px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--white-laranja-02);
+  }
+}
+
+.buttonSecondaryContainerWithoutSeta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 24px;
+  width: fit-content;
+
+  background-color: transparent;
+  border-radius: 80px;
+
+  font-family: var(--font-family-principal);
+  color: var(--laranja-principal);
+  font-size: 18px;
+  text-decoration: none;
+  outline: none;
+  border: solid 2px var(--laranja-principal);
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--laranja-principal);
+    color: var(--neutral-000);
+  }
+}
+
+.buttonSecondaryContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 6px 6px 18px;
+  gap: 15px;
+  width: fit-content;
+
+  background-color: transparent;
+  border-radius: 80px;
+
+  font-family: var(--font-family-principal);
+  color: var(--laranja-principal);
+  font-size: 18px;
+  text-decoration: none;
+  outline: none;
+  border: solid 2px var(--laranja-principal);
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--laranja-principal);
+    color: var(--neutral-000);
+    .iconButtonContainer {
+      background-color: var(--white-laranja-03);
+    }
+  }
+}
+
+.buttonSetaContainer {
+  display: flex;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--laranja-principal);
+  border-radius: 50%;
+  fill: var(--neutral-000);
+  outline: none;
+  border: none;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--white-laranja-02);
+  }
 }
 
 .iconButtonContainer {
@@ -23,6 +163,28 @@
   width: 42px;
   height: 42px;
 
-  background: var(--white-laranja-02);
+  background-color: var(--white-laranja-02);
   border-radius: 40px;
+  transition: background-color 0.2s ease;
+  fill: var(--neutral-000);
+}
+
+@media (max-width: 768px) {
+  .buttonContainer,
+  .buttonSecondaryContainer,
+  .buttonContainerWithoutSeta,
+  .buttonSecondaryContainerWithoutSeta {
+    white-space: nowrap;
+    font-size: 16px;
+  }
+
+  .iconButtonContainer {
+    width: 40px;
+    height: 40px;
+  }
+
+  .buttonContainerWithoutSeta,
+  .buttonSecondaryContainerWithoutSeta {
+    padding: 12px 18px;
+  }
 }
