@@ -38,17 +38,15 @@ export default function Buttom(props: ButtonProps) {
     const withSeta = props.withSeta ?? true;
     return (
       <button
-        className={
+        className={`${
           withSeta
             ? props.type === "primary"
               ? styles.buttonContainer
               : styles.buttonSecondaryContainer
             : props.type === "primary"
               ? styles.buttonContainerWithoutSeta
-              : styles.buttonSecondaryContainerWithoutSeta +
-                " " +
-                props.className
-        }
+              : styles.buttonSecondaryContainerWithoutSeta
+        } ${props.className ?? ""}`}
         onClick={props.onClickButton}
         aria-label={props.ariaLabel}
       >
@@ -61,8 +59,8 @@ export default function Buttom(props: ButtonProps) {
   } else if (props.tagHtml === "seta") {
     return (
       <button
-        className={styles.buttonSetaContainer + " " + props.className}
-        onClick={(e) => props.onClickButton}
+        className={`${styles.buttonSetaContainer} ${props.className ?? ""}`}
+        onClick={() => props.onClickButton?.()}
         aria-label={props.ariaLabel}
       >
         {setaSVG}
@@ -72,17 +70,15 @@ export default function Buttom(props: ButtonProps) {
     const withSeta = props.withSeta ?? true;
     return (
       <Link
-        className={
+        className={`${
           withSeta
             ? props.type === "primary"
               ? styles.buttonContainer
               : styles.buttonSecondaryContainer
             : props.type === "primary"
               ? styles.buttonContainerWithoutSeta
-              : styles.buttonSecondaryContainerWithoutSeta +
-                " " +
-                props.className
-        }
+              : styles.buttonSecondaryContainerWithoutSeta
+        } ${props.className ?? ""}`}
         href={props.href!}
         aria-label={props.ariaLabel}
       >

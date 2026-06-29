@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Product } from "@/app/types/product";
+import { PersonalInfos } from "@/app/types/personalInfos";
 import CardProduct from "@/app/components/card-product";
 import Buttom from "@/app/components/buttom";
 import ModalGetPersonalInfos from "@/app/modals/get-personal-infos";
+import ModalShowResume from "@/app/modals/show-resume";
 import styles from "./style.module.css";
 
 interface CarouselProductsProps {
@@ -14,6 +16,11 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
   const [productModalisOpen, setProductModalisOpen] = useState<Product | null>(
     null,
   );
+  const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
+  const [pedido, setPedido] = useState<{
+    product: Product;
+    personalInfos: PersonalInfos;
+  } | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = productModalisOpen ? "hidden" : "";
@@ -45,6 +52,22 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
           onClose={() => {
             setProductModalisOpen(null);
           }}
+          onFinish={(product, infos) => {
+            setPedido({
+              product,
+              personalInfos: infos,
+            });
+
+            setProductModalisOpen(null);
+            setConfirmModalIsOpen(true);
+          }}
+        />
+      )}
+      {confirmModalIsOpen && pedido && (
+        <ModalShowResume
+          productItem={pedido.product}
+          personalInfos={pedido.personalInfos}
+          onClose={() => setConfirmModalIsOpen(false)}
         />
       )}
       <div className={styles.trackProductsCards}>

@@ -6,17 +6,16 @@ import ProductSimpleListItem from "@/app/components/product-simple-list-item";
 import Input from "@/app/components/input";
 import Buttom from "@/app/components/buttom";
 
-interface ModalGerPersonalInfosProps {
+interface ModalShowResumeProps {
   productItem: Product;
+  personalInfos: PersonalInfos;
   onClose: () => void;
-  onFinish: (itemProduct: Product, personalInfos: PersonalInfos) => void;
 }
 
-export default function ModalGerPersonalInfos({
+export default function ModalShowResume({
   productItem,
   onClose,
-  onFinish,
-}: ModalGerPersonalInfosProps) {
+}: ModalShowResumeProps) {
   const [personalInfos, setPersonalInfos] = useState<PersonalInfos>({
     nome: "",
     telefone: "",
@@ -43,65 +42,20 @@ export default function ModalGerPersonalInfos({
         <div className={styles.contentContainer}>
           <div className={styles.modalHeader}>
             <span className="tag">Seu refúgio saboroso</span>
-            <h2>Apenas mais algumas informações</h2>
+            <h2>Seu pedido foi confirmado</h2>
           </div>
           <div className={styles.line}></div>
           <ProductSimpleListItem productItem={productItem} />
           <div className={styles.line}></div>
-          <div className={styles.inputsContainer}>
-            <Input
-              name="nome"
-              value={personalInfos.nome}
-              showLabel
-              labelText="Nome:"
-              typeInput="text"
-              onAddContent={(value) =>
-                setPersonalInfos((prev) => ({
-                  ...prev,
-                  nome: value,
-                }))
-              }
-            />
 
-            <Input
-              name="telefone"
-              value={personalInfos.telefone}
-              showLabel
-              labelText="Telefone:"
-              typeInput="tel"
-              onAddContent={(value) =>
-                setPersonalInfos((prev) => ({
-                  ...prev,
-                  telefone: value,
-                }))
-              }
-            />
-
-            <Input
-              name="observacao"
-              value={personalInfos.observacao}
-              showLabel
-              labelText="Observação: (opcional)"
-              typeInput="text"
-              isBox
-              heightOfBox={104}
-              onAddContent={(value) =>
-                setPersonalInfos((prev) => ({
-                  ...prev,
-                  observacao: value,
-                }))
-              }
-            />
-          </div>
           <Buttom
             tagHtml={"button"}
-            onClickButton={() => {
-              onFinish(productItem, personalInfos);
-            }}
+            onClickButton={() => {}}
             text={"Finalizar Pedido"}
             type={"primary"}
             ariaLabel={"Finalizar Pedido"}
             direction="to-right"
+            withSeta={false}
             className={styles.buttonModal}
           />
         </div>
