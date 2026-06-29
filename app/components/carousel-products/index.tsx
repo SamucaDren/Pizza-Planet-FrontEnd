@@ -21,6 +21,11 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
     product: Product;
     personalInfos: PersonalInfos;
   } | null>(null);
+  const [indice, setIndice] = useState(0);
+
+  const calcMeioCarrossel = `translateX(calc(0px - ${indice * (240 + 24)}px + calc(min(1232px, 100vw)/2) - 520px/2))`;
+  const calcEndCarrossel = `translateX(calc(0px - ${(Products.length - 1) * (240 + 24)}px + calc(min(1232px, 100vw - 80px)) - 520px))`;
+  const calcStartCarrossel = "translateX(0px)";
 
   useEffect(() => {
     document.body.style.overflow = productModalisOpen ? "hidden" : "";
@@ -33,8 +38,6 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
       document.documentElement.style.overflow = "";
     };
   }, [productModalisOpen]);
-
-  const [indice, setIndice] = useState(0);
 
   function next() {
     setIndice((prev) => (prev + 1) % Products.length);
@@ -105,9 +108,12 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
             className={styles.productsContainer}
             style={{
               transform:
-                indice !== 0 && indice !== 1
-                  ? `translateX(calc(0px - ${(indice - 1) * (240 + 24)}px + 104px))`
-                  : "translateX(0px)",
+                indice === 0 || indice === 1
+                  ? calcStartCarrossel
+                  : indice === Products.length - 1 ||
+                      indice === Products.length - 2
+                    ? calcEndCarrossel
+                    : calcMeioCarrossel,
               transition: "transform 0.5s ease",
             }}
           >
