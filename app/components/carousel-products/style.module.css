@@ -7,6 +7,7 @@
   left: 0;
   z-index: 1;
   transition: transform 0.5s ease;
+  transform: var(--moveSlideDesktop);
 }
 
 .trackProductsCards {
@@ -78,4 +79,36 @@
     #aaaaaa 76%,
     rgba(153, 153, 153, 0) 100%
   );
+}
+
+@media (max-width: 768px) {
+  .productsContainer {
+    transform: var(--moveSlideMobile);
+  }
+
+  .maskProductsContainerEnd,
+  .maskProductsContainerFirst,
+  .maskProductsContainer {
+    mask-image: none;
+  }
+  .trackProductsCards {
+    overflow: visible;
+  }
+
+  .containerButton {
+    top: 104px;
+    width: calc(100vw - 24px);
+    left: -12px;
+
+    .previous {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #ffffff;
+    }
+    .next {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #ffffff;
+    }
+  }
 }

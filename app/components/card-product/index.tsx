@@ -37,6 +37,12 @@ export default function CardProduct({
       <div className={styles.headerContent}>
         <h3>{name}</h3>
         <p>{description}</p>
+        <span className={styles.priceContainer}>
+          {price.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </span>
         <Buttom
           tagHtml={"button"}
           onClickButton={() => {
@@ -46,13 +52,8 @@ export default function CardProduct({
           type={"primary"}
           ariaLabel={"Fazer pedido"}
           direction="to-right"
+          className={styles.buttonFazerPedido}
         />
-        <span className={styles.priceContainer}>
-          {price.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })}
-        </span>
       </div>
       <Image
         className={styles.imageProductCard}

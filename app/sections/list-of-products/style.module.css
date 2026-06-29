@@ -37,3 +37,21 @@
     color: var(--neutral-600);
   }
 }
+
+@media (max-width: 768px) {
+  .productsSectionContainer {
+    padding: 64px 24px;
+    gap: 48px;
+  }
+
+  .headerProducts {
+    max-width: none;
+  }
+
+  .headerProducts h2 {
+    font-size: 32px;
+  }
+  .headerProducts p {
+    font-size: 16px;
+  }
+}

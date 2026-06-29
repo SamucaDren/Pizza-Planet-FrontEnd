@@ -23,9 +23,16 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
   } | null>(null);
   const [indice, setIndice] = useState(0);
 
-  const calcMeioCarrossel = `translateX(calc(0px - ${indice * (240 + 24)}px + calc(min(1232px, 100vw)/2) - 520px/2))`;
+  const calcMeioCarrossel = `translateX(calc(0px - ${indice * (240 + 24)}px - 24px + calc(min(1232px, 100vw)/2) - calc(min(520px, 100vw - 48px)/2))`;
   const calcEndCarrossel = `translateX(calc(0px - ${(Products.length - 1) * (240 + 24)}px + calc(min(1232px, 100vw - 80px)) - 520px))`;
   const calcStartCarrossel = "translateX(0px)";
+
+  const moveSlideDesktop =
+    indice === 0 || indice === 1
+      ? calcStartCarrossel
+      : indice === Products.length - 1 || indice === Products.length - 2
+        ? calcEndCarrossel
+        : calcMeioCarrossel;
 
   useEffect(() => {
     document.body.style.overflow = productModalisOpen ? "hidden" : "";
@@ -106,16 +113,12 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
         >
           <div
             className={styles.productsContainer}
-            style={{
-              transform:
-                indice === 0 || indice === 1
-                  ? calcStartCarrossel
-                  : indice === Products.length - 1 ||
-                      indice === Products.length - 2
-                    ? calcEndCarrossel
-                    : calcMeioCarrossel,
-              transition: "transform 0.5s ease",
-            }}
+            style={
+              {
+                "--moveSlideDesktop": moveSlideDesktop,
+                "--moveSlideMobile": calcMeioCarrossel,
+              } as React.CSSProperties
+            }
           >
             {Products.map((product) => (
               <CardProduct

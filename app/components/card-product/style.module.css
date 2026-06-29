@@ -121,3 +121,58 @@
 
   color: var(--white-laranja-01);
 }
+
+@media (max-width: 768px) {
+  .cardProductCotainer {
+    max-height: 662px;
+
+    min-width: calc(100vw - 48px);
+  }
+
+  .cardProductCotainerNoMain {
+    max-height: 662px;
+    min-width: none;
+    width: calc(100vw - 48px);
+  }
+  .priceContainer {
+    padding: 16px;
+
+    position: relative;
+
+    right: none;
+    bottom: none;
+
+    justify-content: center;
+    width: 100%;
+    border-radius: 24px;
+  }
+
+  .headerContent {
+    padding: 24px;
+
+    h3 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .buttonFazerPedido {
+    width: 100%;
+  }
+
+  .imageProductCard {
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    top: 0;
+
+    mask-image: radial-gradient(
+      100% 100% at 50% 0%,
+      black 50%,
+      rgba(115, 115, 115, 0) 100%
+    );
+  }
+}
