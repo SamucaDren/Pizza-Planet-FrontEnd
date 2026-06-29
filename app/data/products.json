@@ -2,42 +2,42 @@
   "products": [
     {
       "id": 1,
-      "name": "Calabresa",
+      "name": "Pizza de Calabresa",
       "description": "Molho de tomate, mussarela, calabresa e cebola.",
       "price": 49.9,
       "image": "/products-images/calabresa.jpeg"
     },
     {
       "id": 2,
-      "name": "Margherita",
+      "name": "Pizza Margherita",
       "description": "Molho de tomate, mussarela, tomate e manjericão.",
       "price": 52.9,
       "image": "/products-images/margherita.jpeg"
     },
     {
       "id": 3,
-      "name": "Portuguesa",
+      "name": "Pizza Portuguesa",
       "description": "Mussarela, presunto, ovos, cebola e azeitonas.",
       "price": 54.9,
       "image": "/products-images/portuguesa.jpeg"
     },
     {
       "id": 4,
-      "name": "Frango com Catupiry",
+      "name": "Pizza de Frango com Catupiry",
       "description": "Frango desfiado, Catupiry e mussarela.",
       "price": 56.9,
       "image": "/products-images/calabresa.jpeg"
     },
     {
       "id": 5,
-      "name": "Quatro Queijos",
+      "name": "Pizza Quatro Queijos",
       "description": "Mussarela, parmesão, provolone e gorgonzola.",
       "price": 58.9,
       "image": "/products-images/calabresa.jpeg"
     },
     {
       "id": 6,
-      "name": "Pepperoni",
+      "name": "Pizza de Pepperoni",
       "description": "Molho de tomate, mussarela e pepperoni.",
       "price": 59.9,
       "image": "/products-images/calabresa.jpeg"

@@ -1,0 +1,155 @@
+.inputContainerSingle {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+
+  label {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--neutral-600);
+    width: 100%;
+  }
+}
+
+.inputContainerSingle input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.inputContainerSingle input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.timeInput {
+  flex: 1;
+  display: flex;
+
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+
+  background: transparent;
+
+  border: none;
+  box-shadow: 0 0 0 1.5px var(--white-laranja-04);
+  border-radius: 8px;
+
+  line-height: 160%;
+  color: var(--neutral-400);
+  outline: none;
+
+  &::placeholder {
+    color: var(--neutral-400);
+  }
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0 1.5px var(--laranja-principal);
+  }
+  &:focus {
+    outline: none;
+
+    box-shadow: 0 0 0 1.5px var(--laranja-principal);
+  }
+}
+
+.dateInput {
+  min-width: 75%;
+  display: flex;
+
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+
+  background: transparent;
+
+  border: none;
+  box-shadow: 0 0 0 1.5px var(--white-laranja-04);
+  border-radius: 8px;
+
+  line-height: 160%;
+  color: var(--preto-40b);
+  outline: none;
+
+  &::placeholder {
+    color: var(--neutral-400);
+  }
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0 1.5px var(--laranja-principal);
+  }
+  &:focus {
+    outline: none;
+
+    box-shadow: 0 0 0 1.5px var(--laranja-principal);
+  }
+}
+
+.datetimeContainer {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.inputContainerSingle .inputText {
+  font-family: var(--font-family-principal);
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+  display: flex;
+
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+
+  background: transparent;
+
+  border: none;
+  box-shadow: 0 0 0 1.5px var(--white-laranja-04);
+  border-radius: 8px;
+
+  line-height: 160%;
+  color: var(--preto-40b);
+  outline: none;
+
+  &::placeholder {
+    color: var(--neutral-400);
+  }
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0 1.5px var(--laranja-principal);
+  }
+  &:focus {
+    outline: none;
+
+    box-shadow: 0 0 0 1.5px var(--laranja-principal);
+  }
+}

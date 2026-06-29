@@ -1,0 +1,56 @@
+.listItem {
+  display: flex;
+  flex-direction: row;
+
+  gap: 24px;
+
+  width: 100%;
+  align-items: center;
+}
+.imageOfProduct {
+  width: 160px;
+  height: 120px;
+
+  border-radius: 12px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  width: 100%;
+  h3 {
+    width: 100%;
+
+    font-weight: 600;
+    font-size: 24px;
+
+    letter-spacing: -0.03em;
+
+    color: var(--neutral-700);
+  }
+  p {
+    width: 100%;
+
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+
+    letter-spacing: -0.03em;
+
+    color: var(--neutral-600);
+  }
+  span {
+    width: 100%;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+
+    letter-spacing: -0.03em;
+
+    color: var(--white-laranja-01);
+  }
+}

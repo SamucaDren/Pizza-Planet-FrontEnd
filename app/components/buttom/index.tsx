@@ -62,7 +62,7 @@ export default function Buttom(props: ButtonProps) {
     return (
       <button
         className={styles.buttonSetaContainer + " " + props.className}
-        onClick={props.onClickButton}
+        onClick={(e) => props.onClickButton}
         aria-label={props.ariaLabel}
       >
         {setaSVG}

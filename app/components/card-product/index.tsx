@@ -1,20 +1,33 @@
 "use client";
+
 import styles from "./style.module.css";
 import Image from "next/image";
 import Buttom from "@/app/components/buttom";
+
 import { Product } from "@/app/types/product";
 
 interface CardProductProps extends Product {
   main?: boolean;
+  openModal: (itemProduct: Product) => void;
 }
 
 export default function CardProduct({
+  id,
   name,
   description,
   price,
   image,
   main = false,
+  openModal,
 }: CardProductProps) {
+  const productItem: Product = {
+    id,
+    name,
+    description,
+    price,
+    image,
+  };
+
   return (
     <div
       className={
@@ -26,14 +39,19 @@ export default function CardProduct({
         <p>{description}</p>
         <Buttom
           tagHtml={"button"}
-          onClickButton={() => {}}
+          onClickButton={() => {
+            openModal(productItem);
+          }}
           text={"Fazer pedido"}
           type={"primary"}
           ariaLabel={"Fazer pedido"}
           direction="to-right"
         />
         <span className={styles.priceContainer}>
-          {"R$ " + price.toString()}
+          {price.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
         </span>
       </div>
       <Image

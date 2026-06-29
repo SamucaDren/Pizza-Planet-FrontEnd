@@ -1,5 +1,5 @@
 .productsContainer {
-  height: 550px;
+  height: 546px;
   display: flex;
   flex-direction: row;
   gap: 24px;
@@ -45,11 +45,12 @@
 
 .maskProductsContainer {
   max-width: 1232px;
+  width: 100%;
   mask-image: linear-gradient(
     270deg,
     rgba(255, 255, 255, 0) 0%,
-    #efefef 13.68%,
-    #aaaaaa 82.89%,
+    #efefef 24%,
+    #aaaaaa 76%,
     rgba(153, 153, 153, 0) 100%
   );
   transition: all 0.2s ease-in-out;
@@ -57,22 +58,24 @@
 
 .maskProductsContainerFirst {
   max-width: 1232px;
+  width: 100%;
   mask-image: linear-gradient(
     270deg,
     rgba(255, 255, 255, 0) 0%,
-    #efefef 13.68%,
-    #aaaaaa 82.89%,
+    #efefef 24%,
+    #aaaaaa 76%,
     rgba(153, 153, 153, 1) 100%
   );
 }
 
 .maskProductsContainerEnd {
   max-width: 1232px;
+  width: 100%;
   mask-image: linear-gradient(
     270deg,
     rgba(255, 255, 255, 1) 0%,
-    #efefef 13.68%,
-    #aaaaaa 82.89%,
+    #efefef 24%,
+    #aaaaaa 76%,
     rgba(153, 153, 153, 0) 100%
   );
 }

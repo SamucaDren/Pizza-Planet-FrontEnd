@@ -1,5 +1,3 @@
-"use client";
-import { useState } from "react";
 import styles from "./style.module.css";
 import productsData from "@/app/data/products.json";
 import { Product } from "@/app/types/product";
