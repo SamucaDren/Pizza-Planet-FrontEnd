@@ -79,5 +79,15 @@
   .modalContainer {
     height: fit-content;
     max-height: none;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .modalHeader {
+    gap: 12px;
+
+    h2 {
+      font-size: 24px;
+    }
   }
 }

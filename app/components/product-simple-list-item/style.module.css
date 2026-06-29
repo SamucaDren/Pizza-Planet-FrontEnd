@@ -54,3 +54,29 @@
     color: var(--white-laranja-01);
   }
 }
+
+@media (max-width: 768px) {
+  .contentContainer {
+    gap: 8px;
+
+    h3 {
+      font-size: 18px;
+      line-height: 100%;
+    }
+    p {
+      font-size: 16px;
+      line-height: 100%;
+    }
+    span {
+      font-size: 18px;
+      line-height: 100%;
+    }
+  }
+
+  .imageOfProduct {
+    width: 64px;
+    height: auto;
+
+    border-radius: 12px;
+  }
+}
