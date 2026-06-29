@@ -95,13 +95,16 @@
     align-items: flex-start;
     overflow-y: auto;
 
-    padding: 24px;
+    padding: 64px 24px 24px 24px;
   }
-  .modalContainer {
+  .contentContainer {
     height: fit-content;
     max-height: none;
     padding: 32px 24px 24px;
     gap: 24px;
+  }
+  .modalContainer {
+    max-height: none;
   }
 
   .modalHeader {

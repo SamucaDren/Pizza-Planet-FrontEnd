@@ -11,7 +11,7 @@ interface InputProps {
 
   isBox?: boolean;
   heightOfBox?: number;
-
+  errorMessage?: string;
   value?: string;
 }
 
@@ -25,6 +25,7 @@ export default function Input({
   isBox,
   heightOfBox,
   value = "",
+  errorMessage,
 }: InputProps) {
   function handleDateTimeChange(date: string, time: string) {
     if (!date || !time) return;
@@ -77,10 +78,33 @@ export default function Input({
           type={typeInput}
           value={value}
           placeholder={placeholder}
-          onChange={(e) => onAddContent(e.target.value)}
+          onChange={(e) =>
+            onAddContent(
+              typeInput == "tel" ? formatPhone(e.target.value) : e.target.value,
+            )
+          }
           className={styles.inputText}
         />
       )}
+      {errorMessage && <span className={styles.errorSpan}>{errorMessage}</span>}
     </div>
   );
+}
+
+function formatPhone(value: string) {
+  const numbers = value.replace(/\D/g, "").slice(0, 11);
+
+  if (numbers.length <= 2) {
+    return numbers;
+  }
+
+  if (numbers.length <= 6) {
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+  }
+
+  if (numbers.length <= 10) {
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(6)}`;
+  }
+
+  return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7)}`;
 }

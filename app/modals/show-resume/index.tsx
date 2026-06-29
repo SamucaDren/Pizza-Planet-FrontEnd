@@ -1,9 +1,8 @@
 import styles from "./style.module.css";
-import { useState } from "react";
 import { Product } from "@/app/types/product";
 import { PersonalInfos } from "@/app/types/personalInfos";
 import ProductSimpleListItem from "@/app/components/product-simple-list-item";
-import Input from "@/app/components/input";
+import PersonalInfosListItem from "@/app/components/personal-infos-list-item";
 import Buttom from "@/app/components/buttom";
 
 interface ModalShowResumeProps {
@@ -14,14 +13,9 @@ interface ModalShowResumeProps {
 
 export default function ModalShowResume({
   productItem,
+  personalInfos,
   onClose,
 }: ModalShowResumeProps) {
-  const [personalInfos, setPersonalInfos] = useState<PersonalInfos>({
-    nome: "",
-    telefone: "",
-    observacao: "",
-  });
-
   return (
     <div onClick={onClose} className={styles.bodyBackgroundModal}>
       <div
@@ -45,12 +39,14 @@ export default function ModalShowResume({
             <h2>Seu pedido foi confirmado</h2>
           </div>
           <div className={styles.line}></div>
+          <PersonalInfosListItem personalInfos={personalInfos} />
+          <div className={styles.line}></div>
           <ProductSimpleListItem productItem={productItem} />
           <div className={styles.line}></div>
 
           <Buttom
             tagHtml={"button"}
-            onClickButton={() => {}}
+            onClickButton={onClose}
             text={"Finalizar Pedido"}
             type={"primary"}
             ariaLabel={"Finalizar Pedido"}

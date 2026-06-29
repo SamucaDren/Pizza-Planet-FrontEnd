@@ -25,6 +25,8 @@
   --neutral-100: rgba(252, 249, 248, 1);
   --neutral-000: rgba(255, 255, 255, 1);
 
+  --complementary-red: #ff3737;
+
   /* Text-size styles */
   --heading--64--medium: 64px;
   --heading--40--semi: 40px;

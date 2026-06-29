@@ -9,6 +9,7 @@ import { Product } from "@/app/types/product";
 interface CardProductProps extends Product {
   main?: boolean;
   openModal: (itemProduct: Product) => void;
+  onClickInImage?: () => void;
 }
 
 export default function CardProduct({
@@ -19,6 +20,7 @@ export default function CardProduct({
   image,
   main = false,
   openModal,
+  onClickInImage,
 }: CardProductProps) {
   const productItem: Product = {
     id,
@@ -61,6 +63,7 @@ export default function CardProduct({
         width={520}
         height={350}
         alt={name}
+        onClick={onClickInImage}
       />
     </div>
   );

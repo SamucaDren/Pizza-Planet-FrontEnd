@@ -20,7 +20,6 @@
   width: 100%;
 
   max-width: 926px;
-  max-height: calc(min(800px, 88vh));
 }
 
 .contentContainer {
@@ -28,7 +27,7 @@
   flex-direction: column;
   padding: 40px;
   gap: 32px;
-
+  max-height: calc(min(800px, 88vh));
   width: 100%;
 
   background: var(--neutral-000);
@@ -95,13 +94,16 @@
     align-items: flex-start;
     overflow-y: auto;
 
-    padding: 24px;
+    padding: 64px 24px 24px 24px;
   }
-  .modalContainer {
+  .contentContainer {
     height: fit-content;
     max-height: none;
     padding: 32px 24px 24px;
     gap: 24px;
+  }
+  .modalContainer {
+    max-height: none;
   }
 
   .modalHeader {

@@ -23,6 +23,27 @@ export default function ModalGerPersonalInfos({
     observacao: "",
   });
 
+  const [erroMessageName, setErroMessageName] = useState<string>("");
+  const [erroMessageTel, setErroMessageTel] = useState<string>("");
+
+  const handleEndBuy = () => {
+    if (personalInfos.nome === "") {
+      setErroMessageName("Preencha o campo de nome");
+      return;
+    } else {
+      setErroMessageName("");
+    }
+
+    if (personalInfos.telefone === "") {
+      setErroMessageTel("Não vamos roubar seus dados, confia ;)");
+      return;
+    } else {
+      setErroMessageTel("");
+    }
+
+    onFinish(productItem, personalInfos);
+  };
+
   return (
     <div onClick={onClose} className={styles.bodyBackgroundModal}>
       <div
@@ -47,6 +68,7 @@ export default function ModalGerPersonalInfos({
           </div>
           <div className={styles.line}></div>
           <ProductSimpleListItem productItem={productItem} />
+
           <div className={styles.line}></div>
           <div className={styles.inputsContainer}>
             <Input
@@ -55,6 +77,7 @@ export default function ModalGerPersonalInfos({
               showLabel
               labelText="Nome:"
               typeInput="text"
+              errorMessage={erroMessageName}
               onAddContent={(value) =>
                 setPersonalInfos((prev) => ({
                   ...prev,
@@ -69,6 +92,7 @@ export default function ModalGerPersonalInfos({
               showLabel
               labelText="Telefone:"
               typeInput="tel"
+              errorMessage={erroMessageTel}
               onAddContent={(value) =>
                 setPersonalInfos((prev) => ({
                   ...prev,
@@ -95,12 +119,10 @@ export default function ModalGerPersonalInfos({
           </div>
           <Buttom
             tagHtml={"button"}
-            onClickButton={() => {
-              onFinish(productItem, personalInfos);
-            }}
+            onClickButton={handleEndBuy}
             text={"Finalizar Pedido"}
             type={"primary"}
-            ariaLabel={"Finalizar Pedido"}
+            ariaLabel={"Cotinuar o pedido"}
             direction="to-right"
             className={styles.buttonModal}
           />

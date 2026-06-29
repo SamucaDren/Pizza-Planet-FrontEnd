@@ -153,3 +153,21 @@
     box-shadow: 0 0 0 1.5px var(--laranja-principal);
   }
 }
+
+.errorSpan {
+  width: 100%;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 160%;
+
+  letter-spacing: -0.03em;
+
+  color: var(--complementary-red);
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}

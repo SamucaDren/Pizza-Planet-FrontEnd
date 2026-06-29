@@ -16,7 +16,8 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
   const [productModalisOpen, setProductModalisOpen] = useState<Product | null>(
     null,
   );
-  const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
+  const [showModalModalIsOpen, setShowModalModalIsOpen] = useState(false);
+
   const [pedido, setPedido] = useState<{
     product: Product;
     personalInfos: PersonalInfos;
@@ -35,16 +36,16 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
         : calcMeioCarrossel;
 
   useEffect(() => {
-    document.body.style.overflow = productModalisOpen ? "hidden" : "";
-    document.documentElement.style.overflow = productModalisOpen
-      ? "hidden"
-      : "";
+    const modalOpen = productModalisOpen !== null || showModalModalIsOpen;
+
+    document.body.style.overflow = modalOpen ? "hidden" : "";
+    document.documentElement.style.overflow = modalOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     };
-  }, [productModalisOpen]);
+  }, [productModalisOpen, showModalModalIsOpen]);
 
   function next() {
     setIndice((prev) => (prev + 1) % Products.length);
@@ -69,15 +70,15 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
             });
 
             setProductModalisOpen(null);
-            setConfirmModalIsOpen(true);
+            setShowModalModalIsOpen(true);
           }}
         />
       )}
-      {confirmModalIsOpen && pedido && (
+      {showModalModalIsOpen && pedido && (
         <ModalShowResume
           productItem={pedido.product}
           personalInfos={pedido.personalInfos}
-          onClose={() => setConfirmModalIsOpen(false)}
+          onClose={() => setShowModalModalIsOpen(false)}
         />
       )}
       <div className={styles.trackProductsCards}>
@@ -126,6 +127,9 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
                 {...product}
                 main={Products.findIndex((p) => p.id === product.id) === indice}
                 openModal={(product) => setProductModalisOpen(product)}
+                onClickInImage={() => {
+                  setIndice(Products.findIndex((p) => p.id === product.id));
+                }}
               />
             ))}
           </div>
