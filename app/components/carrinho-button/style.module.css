@@ -87,3 +87,17 @@
 
   color: var(--neutral-000);
 }
+
+@media (max-width: 768px) {
+  .buttonCarrinhoContainer {
+    padding: 6px 6px 6px 6px;
+
+    box-shadow: 0 0 0 2px var(--laranja-principal);
+
+    border-radius: 50%;
+
+    .textOfButton {
+      display: none;
+    }
+  }
+}
