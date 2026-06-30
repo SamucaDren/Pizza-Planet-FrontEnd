@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(26, 4, 0, 0.6);
+  background-color: var(--modal-color-overlay);
   z-index: 999;
   display: flex;
   align-items: center;

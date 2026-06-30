@@ -81,6 +81,12 @@
   );
 }
 
+@media (max-width: 1220px) {
+  .productsContainer {
+    transform: var(--moveSlideTablet);
+  }
+}
+
 @media (max-width: 768px) {
   .productsContainer {
     transform: var(--moveSlideMobile);

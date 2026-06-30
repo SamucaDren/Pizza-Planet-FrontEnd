@@ -1,10 +1,12 @@
 "use client";
-
 import styles from "./style.module.css";
 import Image from "next/image";
 import Buttom from "@/app/components/buttom";
+import CarrinhoButton from "@/app/components/carrinho-button";
 
 import { Product } from "@/app/types/product";
+
+import { PedidoService } from "@/app/services/pedidoService";
 
 interface CardProductProps extends Product {
   main?: boolean;
@@ -30,6 +32,11 @@ export default function CardProduct({
     image,
   };
 
+  const addProductInPedido = () => {
+    const pedidoService = new PedidoService();
+    pedidoService.addProduto(productItem);
+  };
+
   return (
     <div
       className={
@@ -45,17 +52,20 @@ export default function CardProduct({
             currency: "BRL",
           })}
         </span>
-        <Buttom
-          tagHtml={"button"}
-          onClickButton={() => {
-            openModal(productItem);
-          }}
-          text={"Fazer pedido"}
-          type={"primary"}
-          ariaLabel={"Fazer pedido"}
-          direction="to-right"
-          className={styles.buttonFazerPedido}
-        />
+        <div className={styles.buttonsCotainer}>
+          <Buttom
+            tagHtml={"button"}
+            onClickButton={() => {
+              openModal(productItem);
+            }}
+            text={"Fazer pedido"}
+            type={"primary"}
+            ariaLabel={"Fazer pedido"}
+            direction="to-right"
+            className={styles.buttonFazerPedido}
+          />
+          <CarrinhoButton withText={false} onClickButton={addProductInPedido} />
+        </div>
       </div>
       <Image
         className={styles.imageProductCard}

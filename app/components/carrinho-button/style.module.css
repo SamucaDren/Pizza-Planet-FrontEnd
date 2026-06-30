@@ -1,0 +1,89 @@
+.buttonCarrinhoContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  padding: 6px 6px 6px 24px;
+  gap: 16px;
+  align-items: center;
+  background-color: transparent;
+  box-shadow: 0 0 0 2px var(--laranja-principal);
+  border: none;
+  border-radius: 80px;
+
+  color: var(--neutral-600);
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    color: var(--neutral-000);
+    background-color: var(--laranja-principal);
+
+    .iconeButtonCarrinho {
+      background: var(--white-laranja-02);
+    }
+  }
+}
+
+.buttonCarrinhoContainer.withoutText {
+  padding: 6px 6px 6px 6px;
+  &:hover {
+    .iconeSemTexto {
+      fill: var(--white-laranja-06);
+    }
+  }
+}
+
+.iconeButtonCarrinho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+
+  background: var(--laranja-principal);
+  border-radius: 50%;
+
+  fill: var(--white-laranja-06);
+}
+
+.iconeSemTexto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+
+  background: transparent;
+  border-radius: 50%;
+
+  fill: var(--laranja-principal);
+  transition: fill 0.2s ease-out;
+}
+
+.itemsCounter {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 0px;
+  top: 0px;
+
+  background: var(--complementary-green);
+  border-radius: 50%;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+
+  color: var(--neutral-000);
+}

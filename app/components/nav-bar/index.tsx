@@ -1,17 +1,46 @@
+"use client";
 import styles from "./style.module.css";
+import { useState, useEffect, useMemo } from "react";
+
 import Image from "next/image";
-import Link from "next/link";
-import Buttom from "@/app/components/buttom";
+//import Link from "next/link";
+//import Buttom from "@/app/components/buttom";
+import CarrinhoButton from "@/app/components/carrinho-button";
+import DrawerCarrinho from "@/app/modals/drawer-carrinho";
+import { PedidoService } from "@/app/services/pedidoService";
 
 export default function NavBar() {
+  const [isOpenDrawerCarrinho, setIsOpenDrawerCarrinho] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpenDrawerCarrinho ? "hidden" : "";
+    document.documentElement.style.overflow = isOpenDrawerCarrinho
+      ? "hidden"
+      : "";
+
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isOpenDrawerCarrinho]);
+
   return (
-    <nav className={styles.navBarContainer}>
-      <Image src="/logo.svg" width={185} height={34} alt={""} />
-      {/*       <div className={styles.linksContainerNavBar}>
+    <>
+      {isOpenDrawerCarrinho && (
+        <DrawerCarrinho
+          onClose={() => {
+            setIsOpenDrawerCarrinho(false);
+          }}
+        />
+      )}
+      <nav className={styles.navBarContainer}>
+        <Image src="/logo.svg" width={185} height={34} alt={""} />
+        {/*       <div className={styles.linksContainerNavBar}>
         <Link href="/">Exemplo</Link>
         <Link href="/">Exemplo</Link>
         <Link href="/">Exemplo</Link>
-      </div>*/}
+      </div>
 
       <Buttom
         tagHtml="url"
@@ -21,7 +50,12 @@ export default function NavBar() {
         direction="to-right"
         withSeta={false}
         href="/"
-      />
-    </nav>
+      />*/}
+        <CarrinhoButton
+          itemsCounter={new PedidoService().getPedido().itens.length || 0}
+          onClickButton={() => setIsOpenDrawerCarrinho(true)}
+        />
+      </nav>
+    </>
   );
 }

@@ -1,7 +1,12 @@
+"use client";
 import styles from "./style.module.css";
 import Buttom from "@/app/components/buttom";
 import HeroImage from "@/app/components/hero-image";
-import NavBar from "@/app/components/nav-bar";
+
+import dynamic from "next/dynamic";
+const NavBar = dynamic(() => import("@/app/components/nav-bar"), {
+  ssr: false,
+});
 
 export default function HeroSection() {
   return (

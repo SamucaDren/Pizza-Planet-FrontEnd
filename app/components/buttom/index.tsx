@@ -8,7 +8,7 @@ type ButtonProps =
       text: string;
       type: "primary" | "secondary";
       ariaLabel?: string;
-      direction: "to-up" | "to-down" | "to-left" | "to-right";
+      direction?: "to-up" | "to-down" | "to-left" | "to-right";
       className?: string;
       withSeta?: boolean;
     }
@@ -18,21 +18,21 @@ type ButtonProps =
       text: string;
       type: "primary" | "secondary";
       ariaLabel?: string;
-      direction: "to-up" | "to-down" | "to-left" | "to-right";
+      direction?: "to-up" | "to-down" | "to-left" | "to-right";
       className?: string;
       withSeta?: boolean;
     }
   | {
       tagHtml: "seta";
       type: "primary" | "secondary";
-      direction: "to-up" | "to-down" | "to-left" | "to-right";
+      direction?: "to-up" | "to-down" | "to-left" | "to-right";
       onClickButton?: () => void;
       ariaLabel?: string;
       className?: string;
     };
 
 export default function Buttom(props: ButtonProps) {
-  const setaSVG = setaReturn(props.direction);
+  const setaSVG = setaReturn(props.direction!);
 
   if (props.tagHtml === "button") {
     const withSeta = props.withSeta ?? true;
