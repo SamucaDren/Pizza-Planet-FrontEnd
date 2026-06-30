@@ -41,6 +41,15 @@
   }
 }
 
+@keyframes showDrawerMobile {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .headerContainer {
   display: flex;
   flex-direction: column;
@@ -118,6 +127,7 @@
     padding: 40px 24px 24px 24px;
     gap: 16px;
     transform: translateX(0);
+    animation: showDrawerMobile 0.2s forwards;
   }
 
   .btnCotainers {
@@ -127,8 +137,5 @@
   .itemsCotainer {
     padding: 16px;
     gap: 24px;
-
-    width: 100%;
-    height: 100%;
   }
 }

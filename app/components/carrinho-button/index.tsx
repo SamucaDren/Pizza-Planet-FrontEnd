@@ -19,7 +19,12 @@ export default function CarrinhoButton({
       {itemsCounter ? (
         <span className={styles.itemsCounter}>{itemsCounter}</span>
       ) : null}
-      <span className={styles.textOfButton}>{withText && "Meu carrinho"}</span>
+      {withText ? (
+        <span className={styles.textOfButton}>
+          {withText && "Meu carrinho"}
+        </span>
+      ) : null}
+
       <span
         className={withText ? styles.iconeButtonCarrinho : styles.iconeSemTexto}
       >
