@@ -3,13 +3,18 @@ import styles from "./style.module.css";
 import Buttom from "@/app/components/buttom";
 import ProductCarrinhoListItem from "@/app/components/product-carrinho-list-item";
 import { PedidoService } from "@/app/services/pedidoService";
+import { Pedido } from "@/app/types/pedido";
 import { useState } from "react";
 
 interface DrawerCarrinhoProps {
   onClose?: () => void;
+  onFinalizaPedido: (pedido: Pedido) => void;
 }
 
-export default function DrawerCarrinho({ onClose }: DrawerCarrinhoProps) {
+export default function DrawerCarrinho({
+  onClose,
+  onFinalizaPedido,
+}: DrawerCarrinhoProps) {
   const [pedido, setPedido] = useState(() => new PedidoService().getPedido());
 
   const atualizarPedido = () => {
@@ -37,16 +42,16 @@ export default function DrawerCarrinho({ onClose }: DrawerCarrinhoProps) {
         <div className={styles.mainContentGap}>
           <div className={styles.itemsCotainer}>
             {pedido.itens.map((item, index) => (
-              <>
+              <div key={`${item.product.id}-${index}`}>
                 <ProductCarrinhoListItem
-                  key={item.product.id}
                   item={item}
                   triggerUpdateTotal={atualizarPedido}
                 />
+
                 {index < pedido.itens.length - 1 && (
                   <div className={styles.line}></div>
                 )}
-              </>
+              </div>
             ))}
           </div>
           <div className={styles.totalContainer}>
@@ -62,7 +67,9 @@ export default function DrawerCarrinho({ onClose }: DrawerCarrinhoProps) {
         <div className={styles.btnCotainers}>
           <Buttom
             tagHtml="button"
-            onClickButton={() => {}}
+            onClickButton={() => {
+              onFinalizaPedido(pedido);
+            }}
             text="Finalizar pedido"
             type="primary"
             withSeta={false}

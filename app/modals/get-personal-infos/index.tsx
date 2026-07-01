@@ -1,19 +1,20 @@
 import styles from "./style.module.css";
 import { useState } from "react";
 import { Product } from "@/app/types/product";
+import { Pedido } from "@/app/types/pedido";
 import { PersonalInfos } from "@/app/types/personalInfos";
 import ProductSimpleListItem from "@/app/components/product-simple-list-item";
 import Input from "@/app/components/input";
 import Buttom from "@/app/components/buttom";
 
 interface ModalGerPersonalInfosProps {
-  productItem: Product;
+  pedido: Pedido;
   onClose: () => void;
-  onFinish: (itemProduct: Product, personalInfos: PersonalInfos) => void;
+  onFinish: (pedido: Pedido) => void;
 }
 
 export default function ModalGerPersonalInfos({
-  productItem,
+  pedido,
   onClose,
   onFinish,
 }: ModalGerPersonalInfosProps) {
@@ -41,7 +42,7 @@ export default function ModalGerPersonalInfos({
       setErroMessageTel("");
     }
 
-    onFinish(productItem, personalInfos);
+    onFinish({ ...pedido, personalInfos: personalInfos });
   };
 
   return (
@@ -66,8 +67,8 @@ export default function ModalGerPersonalInfos({
             <span className="tag">Seu refúgio saboroso</span>
             <h2>Apenas mais algumas informações</h2>
           </div>
-          <div className={styles.line}></div>
-          <ProductSimpleListItem productItem={productItem} />
+
+          {/*  <div className={styles.line}></div><ProductSimpleListItem productItem={productItem} />*/}
 
           <div className={styles.line}></div>
           <div className={styles.inputsContainer}>

@@ -2,8 +2,8 @@
 import styles from "./style.module.css";
 import Buttom from "@/app/components/buttom";
 import HeroImage from "@/app/components/hero-image";
-
 import dynamic from "next/dynamic";
+
 const NavBar = dynamic(() => import("@/app/components/nav-bar"), {
   ssr: false,
 });

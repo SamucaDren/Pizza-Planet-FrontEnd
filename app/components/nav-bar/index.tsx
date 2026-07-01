@@ -8,10 +8,15 @@ import Image from "next/image";
 import CarrinhoButton from "@/app/components/carrinho-button";
 import DrawerCarrinho from "@/app/modals/drawer-carrinho";
 import { PedidoService } from "@/app/services/pedidoService";
+import ModalGetPersonalInfos from "@/app/modals/get-personal-infos";
+import ModalShowResume from "@/app/modals/show-resume";
+import { Pedido } from "@/app/types/pedido";
 
 export default function NavBar() {
   const [isOpenDrawerCarrinho, setIsOpenDrawerCarrinho] =
     useState<boolean>(false);
+  const [showGetPersonalInfos, setShowGetPersonalInfos] =
+    useState<Pedido | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = isOpenDrawerCarrinho ? "hidden" : "";
@@ -27,8 +32,25 @@ export default function NavBar() {
 
   return (
     <>
+      {showGetPersonalInfos && (
+        <ModalGetPersonalInfos
+          pedido={showGetPersonalInfos}
+          onClose={() => {
+            setShowGetPersonalInfos(null);
+          }}
+          onFinish={(pedido) => {
+            //setPedido(pedido);
+            //setProductModalisOpen(null);
+            //setShowModalModalIsOpen(true);
+          }}
+        />
+      )}
       {isOpenDrawerCarrinho && (
         <DrawerCarrinho
+          onFinalizaPedido={(pedido) => {
+            setIsOpenDrawerCarrinho(false);
+            setShowGetPersonalInfos(pedido);
+          }}
           onClose={() => {
             setIsOpenDrawerCarrinho(false);
           }}

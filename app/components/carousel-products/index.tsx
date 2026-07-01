@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Product } from "@/app/types/product";
-import { PersonalInfos } from "@/app/types/personalInfos";
+import { Pedido } from "@/app/types/pedido";
+
+//import { PersonalInfos } from "@/app/types/personalInfos";
 import CardProduct from "@/app/components/card-product";
 import Buttom from "@/app/components/buttom";
 import ModalGetPersonalInfos from "@/app/modals/get-personal-infos";
@@ -18,10 +20,7 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
   );
   const [showModalModalIsOpen, setShowModalModalIsOpen] = useState(false);
 
-  const [pedido, setPedido] = useState<{
-    product: Product;
-    personalInfos: PersonalInfos;
-  } | null>(null);
+  const [pedido, setPedido] = useState<Pedido | null>(null);
   const [indice, setIndice] = useState(0);
 
   const calcMeioCarrossel = `translateX(calc(0px - ${indice * (240 + 24)}px + calc(min(1232px, 100vw - 48px)/2) - calc(min(608px, 100vw - 48px)/2))`;
@@ -66,15 +65,12 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
     <>
       {productModalisOpen && (
         <ModalGetPersonalInfos
-          productItem={productModalisOpen}
+          pedido={{ itens: [{ product: productModalisOpen, quantidade: 1 }] }}
           onClose={() => {
             setProductModalisOpen(null);
           }}
-          onFinish={(product, infos) => {
-            setPedido({
-              product,
-              personalInfos: infos,
-            });
+          onFinish={(pedido) => {
+            setPedido(pedido);
 
             setProductModalisOpen(null);
             setShowModalModalIsOpen(true);
@@ -83,8 +79,7 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
       )}
       {showModalModalIsOpen && pedido && (
         <ModalShowResume
-          productItem={pedido.product}
-          personalInfos={pedido.personalInfos}
+          pedido={pedido}
           onClose={() => setShowModalModalIsOpen(false)}
         />
       )}

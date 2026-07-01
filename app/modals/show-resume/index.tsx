@@ -1,19 +1,19 @@
 import styles from "./style.module.css";
 import { Product } from "@/app/types/product";
+
+import { Pedido } from "@/app/types/pedido";
 import { PersonalInfos } from "@/app/types/personalInfos";
 import ProductSimpleListItem from "@/app/components/product-simple-list-item";
 import PersonalInfosListItem from "@/app/components/personal-infos-list-item";
 import Buttom from "@/app/components/buttom";
 
 interface ModalShowResumeProps {
-  productItem: Product;
-  personalInfos: PersonalInfos;
+  pedido: Pedido;
   onClose: () => void;
 }
 
 export default function ModalShowResume({
-  productItem,
-  personalInfos,
+  pedido,
   onClose,
 }: ModalShowResumeProps) {
   return (
@@ -39,9 +39,15 @@ export default function ModalShowResume({
             <h2>Seu pedido foi confirmado</h2>
           </div>
           <div className={styles.line}></div>
-          <PersonalInfosListItem personalInfos={personalInfos} />
+          <PersonalInfosListItem personalInfos={pedido.personalInfos!} />
           <div className={styles.line}></div>
-          <ProductSimpleListItem productItem={productItem} />
+          {pedido.itens.map((item) => (
+            <ProductSimpleListItem
+              key={item.product.id}
+              productItem={item.product}
+            />
+          ))}
+
           <div className={styles.line}></div>
 
           <Buttom
