@@ -39,4 +39,55 @@ export class PedidoService {
 
     this.savePedido(pedido);
   }
+
+  finalizaPedido(pedido: Pedido) {
+    const pedidosFinalizados = this.getPedidosFinalizados();
+    pedidosFinalizados.push(pedido);
+    localStorage.setItem(
+      "pedidosFinalizados",
+      JSON.stringify(pedidosFinalizados),
+    );
+  }
+
+  removeItemByProduto(produto: Product) {
+    const pedido = this.getPedido();
+    const item = pedido.itens.find((i) => i.product.id === produto.id);
+    if (!item) {
+      return;
+    }
+    pedido.itens = pedido.itens.filter((i) => i.product.id !== produto.id);
+    this.savePedido(pedido);
+  }
+
+  removeProduto(produto: Product) {
+    const pedido = this.getPedido();
+
+    const item = pedido.itens.find((i) => i.product.id === produto.id);
+
+    if (!item) {
+      return;
+    }
+
+    if (item.quantidade > 1) {
+      item.quantidade--;
+    } else {
+      pedido.itens = pedido.itens.filter((i) => i.product.id !== produto.id);
+    }
+
+    this.savePedido(pedido);
+  }
+
+  getPedidosFinalizados(): Pedido[] {
+    if (typeof window === "undefined") {
+      return [];
+    }
+
+    const pedidos = localStorage.getItem("pedidosFinalizados");
+
+    if (!pedidos) {
+      return [];
+    }
+
+    return JSON.parse(pedidos);
+  }
 }

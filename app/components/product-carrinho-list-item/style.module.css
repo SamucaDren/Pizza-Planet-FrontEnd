@@ -1,0 +1,170 @@
+.listItem {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  gap: 24px;
+
+  width: 100%;
+  align-items: center;
+}
+.imageOfProduct {
+  width: 160px;
+  height: 120px;
+
+  border-radius: 12px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  gap: 6px;
+
+  width: 100%;
+  min-width: 0;
+
+  h3 {
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.03em;
+    color: var(--neutral-700);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  span {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    letter-spacing: -0.03em;
+    color: var(--white-laranja-01);
+  }
+}
+
+.removeItemButtom {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  background: var(--neutral-200);
+
+  border: 1px solid var(--white-laranja-04);
+  border-radius: 8px;
+  fill: var(--neutral-600);
+
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background: var(--white-laranja-03);
+    fill: var(--neutral-000);
+  }
+}
+
+.editContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  gap: 6px;
+}
+
+.quantidadeContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+  .quantidadeValue {
+    color: var(--neutral-600);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 100%;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--laranja-principal);
+    color: var(--neutral-000);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--white-laranja-02);
+    }
+    &:disabled {
+      background-color: var(--white-laranja-05);
+      cursor: not-allowed;
+      color: var(--white-laranja-03);
+    }
+  }
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .listItem {
+    gap: 12px;
+  }
+
+  .priceContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contentContainer {
+    gap: 8px;
+    width: 100% !important;
+
+    h3 {
+      font-size: 18px;
+      line-height: 100%;
+    }
+    p {
+      font-size: 16px;
+
+      line-height: 100%;
+      min-width: 0;
+      width: 100%;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    span {
+      font-size: 18px;
+      line-height: 100%;
+    }
+  }
+
+  .imageOfProduct {
+    width: 104px;
+    height: auto;
+
+    border-radius: 8px;
+  }
+}
