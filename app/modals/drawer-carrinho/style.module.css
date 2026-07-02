@@ -149,6 +149,16 @@
   }
 }
 
+.errorMessage {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 160%;
+
+  letter-spacing: -0.03em;
+
+  color: var(--complementary-red);
+}
+
 .line {
   width: 100%;
   height: 1px;

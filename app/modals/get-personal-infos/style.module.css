@@ -81,6 +81,27 @@
   border-bottom: 2px dashed var(--neutral-400);
 }
 
+.personalInfosAnteriores {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.titlePersonalinfosAnteriores {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 160%;
+
+  letter-spacing: -0.03em;
+
+  color: var(--neutral-600);
+}
+
+.personalInfosAnterioresContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .inputNameTelContainer,
 .inputRuaNumero {
   display: flex;

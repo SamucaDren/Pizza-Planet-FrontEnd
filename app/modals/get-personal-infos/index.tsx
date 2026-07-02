@@ -3,8 +3,11 @@ import { useState } from "react";
 //import { Product } from "@/app/types/product";
 import { Pedido } from "@/app/types/pedido";
 import { PedidoService } from "@/app/services/pedidoService";
+
+import { PersonalInfoService } from "@/app/services/personalInfoService";
 import { PersonalInfos } from "@/app/types/personalInfos";
 //import ProductSimpleListItem from "@/app/components/product-simple-list-item";
+import PersonalInfosSelect from "@/app/components/personal-infos-select";
 import Input from "@/app/components/input";
 import Buttom from "@/app/components/buttom";
 
@@ -27,6 +30,9 @@ export default function ModalGerPersonalInfos({
     numero: 0,
     bairro: "",
   });
+
+  const personalInfoAnteriores: PersonalInfos[] =
+    new PersonalInfoService().getPersonalInfos();
 
   const [erroMessageName, setErroMessageName] = useState<string>("");
   const [erroMessageTel, setErroMessageTel] = useState<string>("");
@@ -89,10 +95,31 @@ export default function ModalGerPersonalInfos({
             <span className="tag">Seu refúgio saboroso</span>
             <h2>Apenas mais algumas informações</h2>
           </div>
+          <div className={styles.line}></div>
+          {personalInfoAnteriores.length > 0 && (
+            <>
+              <div className={styles.personalInfosAnterioresContainer}>
+                <span className={styles.titlePersonalinfosAnteriores}>
+                  Informações de pedidos anteriores:
+                </span>
+                <div className={styles.personalInfosAnteriores}>
+                  {personalInfoAnteriores.slice(-2).map((item, index) => (
+                    <PersonalInfosSelect
+                      key={index}
+                      personalInfo={item}
+                      onClick={(p) => {
+                        onFinish({ ...pedido, personalInfos: p });
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className={styles.line}></div>
+            </>
+          )}
 
           {/*  <div className={styles.line}></div><ProductSimpleListItem productItem={productItem} />*/}
 
-          <div className={styles.line}></div>
           <div className={styles.inputNameTelContainer}>
             <Input
               name="nome"
@@ -211,7 +238,7 @@ export default function ModalGerPersonalInfos({
                 new PedidoService().addProduto(pedido.itens[0].product);
                 onClose();
               }}
-              text={"Finalizar Pedido"}
+              text={"Voltar a compra"}
               type={"secondary"}
               ariaLabel={"Cotinuar compra"}
               withSeta={false}

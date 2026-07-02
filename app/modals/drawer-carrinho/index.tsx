@@ -15,6 +15,7 @@ export default function DrawerCarrinho({
   onClose,
   onFinalizaPedido,
 }: DrawerCarrinhoProps) {
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [pedido, setPedido] = useState(() => new PedidoService().getPedido());
 
   const atualizarPedido = () => {
@@ -66,12 +67,22 @@ export default function DrawerCarrinho({
               })}
             </span>
           </div>
+          {errorMessage && (
+            <span className={styles.errorMessage}>{errorMessage}</span>
+          )}
         </div>
+
         <div className={styles.btnCotainers}>
           <Buttom
             tagHtml="button"
             onClickButton={() => {
-              onFinalizaPedido(pedido);
+              if (pedido.itens.length == 0) {
+                setErrorMessage(
+                  "Adicione produtos ao carrinho para realizar o pedido",
+                );
+              } else {
+                onFinalizaPedido(pedido);
+              }
             }}
             text="Finalizar pedido"
             type="primary"
