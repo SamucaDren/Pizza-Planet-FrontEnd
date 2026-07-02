@@ -9,6 +9,7 @@ import Buttom from "@/app/components/buttom";
 import ModalGetPersonalInfos from "@/app/modals/get-personal-infos";
 import ModalShowResume from "@/app/modals/show-resume";
 import styles from "./style.module.css";
+import { PedidoService } from "@/app/services/pedidoService";
 
 interface CarouselProductsProps {
   Products: Product[];
@@ -81,6 +82,10 @@ export default function CarouselProducts({ Products }: CarouselProductsProps) {
         <ModalShowResume
           pedido={pedido}
           onClose={() => setShowModalModalIsOpen(false)}
+          onFinalizaPedido={(pedido) => {
+            new PedidoService().finalizaPedido(pedido);
+            setShowModalModalIsOpen(false);
+          }}
         />
       )}
       <div className={styles.trackProductsCards}>

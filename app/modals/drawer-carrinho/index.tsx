@@ -42,7 +42,10 @@ export default function DrawerCarrinho({
         <div className={styles.mainContentGap}>
           <div className={styles.itemsCotainer}>
             {pedido.itens.map((item, index) => (
-              <div key={`${item.product.id}-${index}`}>
+              <div
+                className={styles.itemCotainerWithLine}
+                key={`${item.product.id}-${index}`}
+              >
                 <ProductCarrinhoListItem
                   item={item}
                   triggerUpdateTotal={atualizarPedido}

@@ -81,11 +81,27 @@
   border-bottom: 2px dashed var(--neutral-400);
 }
 
+.inputNameTelContainer,
+.inputRuaNumero {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.inputRuaNumero div:last-child {
+  width: 120px;
+}
+
 .inputsContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 16px;
+}
+
+.inputNameTelContainer button {
+  width: 100%;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -115,5 +131,8 @@
   }
   .buttonModal {
     width: 100% !important;
+  }
+  .inputNameTelContainer {
+    flex-direction: column;
   }
 }

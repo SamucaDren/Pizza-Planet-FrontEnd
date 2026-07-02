@@ -40,6 +40,16 @@ export class PedidoService {
     this.savePedido(pedido);
   }
 
+  finalizaPedidoFromCarrinho(pedido: Pedido) {
+    const pedidosFinalizados = this.getPedidosFinalizados();
+    pedidosFinalizados.push(pedido);
+    localStorage.setItem(
+      "pedidosFinalizados",
+      JSON.stringify(pedidosFinalizados),
+    );
+    localStorage.removeItem("pedido");
+  }
+
   finalizaPedido(pedido: Pedido) {
     const pedidosFinalizados = this.getPedidosFinalizados();
     pedidosFinalizados.push(pedido);

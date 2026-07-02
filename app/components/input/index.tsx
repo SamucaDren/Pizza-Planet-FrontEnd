@@ -4,7 +4,14 @@ interface InputProps {
   name: string;
   placeholder?: string;
   showLabel?: boolean;
-  typeInput?: "text" | "email" | "tel" | "password" | "date" | "datetime-local";
+  typeInput?:
+    | "text"
+    | "email"
+    | "tel"
+    | "password"
+    | "date"
+    | "datetime-local"
+    | "number";
 
   labelText?: string;
   onAddContent: (value: string) => void;
@@ -13,6 +20,7 @@ interface InputProps {
   heightOfBox?: number;
   errorMessage?: string;
   value?: string;
+  autoComplete?: string;
 }
 
 export default function Input({
@@ -26,6 +34,7 @@ export default function Input({
   heightOfBox,
   value = "",
   errorMessage,
+  autoComplete,
 }: InputProps) {
   function handleDateTimeChange(date: string, time: string) {
     if (!date || !time) return;
@@ -42,6 +51,7 @@ export default function Input({
 
       {isBox ? (
         <textarea
+          auto-complete={autoComplete}
           id={name}
           name={name}
           value={value}
@@ -53,6 +63,7 @@ export default function Input({
       ) : typeInput === "datetime-local" ? (
         <div className="datetime-container">
           <input
+            auto-complete={autoComplete}
             type="date"
             className={styles.dateInput}
             value={dateValue}
@@ -73,6 +84,7 @@ export default function Input({
         </div>
       ) : (
         <input
+          auto-complete={autoComplete}
           id={name}
           name={name}
           type={typeInput}

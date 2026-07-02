@@ -1,9 +1,10 @@
 import styles from "./style.module.css";
 import { useState } from "react";
-import { Product } from "@/app/types/product";
+//import { Product } from "@/app/types/product";
 import { Pedido } from "@/app/types/pedido";
+import { PedidoService } from "@/app/services/pedidoService";
 import { PersonalInfos } from "@/app/types/personalInfos";
-import ProductSimpleListItem from "@/app/components/product-simple-list-item";
+//import ProductSimpleListItem from "@/app/components/product-simple-list-item";
 import Input from "@/app/components/input";
 import Buttom from "@/app/components/buttom";
 
@@ -22,10 +23,17 @@ export default function ModalGerPersonalInfos({
     nome: "",
     telefone: "",
     observacao: "",
+    rua: "",
+    numero: 0,
+    bairro: "",
   });
 
   const [erroMessageName, setErroMessageName] = useState<string>("");
   const [erroMessageTel, setErroMessageTel] = useState<string>("");
+
+  const [erroMessageRua, setErroMessageRua] = useState<string>("");
+
+  const [erroMessageBairro, setErroMessageBairro] = useState<string>("");
 
   const handleEndBuy = () => {
     if (personalInfos.nome === "") {
@@ -40,6 +48,20 @@ export default function ModalGerPersonalInfos({
       return;
     } else {
       setErroMessageTel("");
+    }
+
+    if (personalInfos.rua === "" || personalInfos.numero === 0) {
+      setErroMessageRua("Preencha o campo de endereço");
+      return;
+    } else {
+      setErroMessageRua("");
+    }
+
+    if (personalInfos.bairro === "") {
+      setErroMessageBairro("Preencha o campo de bairro");
+      return;
+    } else {
+      setErroMessageBairro("");
     }
 
     onFinish({ ...pedido, personalInfos: personalInfos });
@@ -71,13 +93,14 @@ export default function ModalGerPersonalInfos({
           {/*  <div className={styles.line}></div><ProductSimpleListItem productItem={productItem} />*/}
 
           <div className={styles.line}></div>
-          <div className={styles.inputsContainer}>
+          <div className={styles.inputNameTelContainer}>
             <Input
               name="nome"
               value={personalInfos.nome}
               showLabel
               labelText="Nome:"
               typeInput="text"
+              placeholder={"João Paulo..."}
               errorMessage={erroMessageName}
               onAddContent={(value) =>
                 setPersonalInfos((prev) => ({
@@ -85,6 +108,7 @@ export default function ModalGerPersonalInfos({
                   nome: value,
                 }))
               }
+              autoComplete={"name"}
             />
 
             <Input
@@ -92,6 +116,7 @@ export default function ModalGerPersonalInfos({
               value={personalInfos.telefone}
               showLabel
               labelText="Telefone:"
+              placeholder={"(35) 9999-9999"}
               typeInput="tel"
               errorMessage={erroMessageTel}
               onAddContent={(value) =>
@@ -100,12 +125,63 @@ export default function ModalGerPersonalInfos({
                   telefone: value,
                 }))
               }
+              autoComplete={"tel"}
+            />
+          </div>
+          <div className={styles.line}></div>
+          <div className={styles.inputsContainer}>
+            <div className={styles.inputRuaNumero}>
+              <Input
+                name="rua"
+                value={personalInfos.rua}
+                showLabel
+                placeholder={"R. Tiradentes..."}
+                labelText="Rua:"
+                typeInput="text"
+                errorMessage={erroMessageRua}
+                onAddContent={(value) =>
+                  setPersonalInfos((prev) => ({
+                    ...prev,
+                    rua: value,
+                  }))
+                }
+                autoComplete={"address-line1"}
+              />
+              <Input
+                name="numero"
+                value={personalInfos.numero.toString()}
+                showLabel
+                labelText="N°:"
+                typeInput="number"
+                onAddContent={(value) =>
+                  setPersonalInfos((prev) => ({
+                    ...prev,
+                    numero: Number(value) > 0 ? Number(value) : 0,
+                  }))
+                }
+              />
+            </div>
+            <Input
+              name="bairro"
+              value={personalInfos.bairro}
+              showLabel
+              labelText="Bairro:"
+              placeholder={"B. Imperatriz..."}
+              typeInput="text"
+              errorMessage={erroMessageBairro}
+              onAddContent={(value) =>
+                setPersonalInfos((prev) => ({
+                  ...prev,
+                  bairro: value,
+                }))
+              }
             />
 
             <Input
               name="observacao"
               value={personalInfos.observacao}
               showLabel
+              placeholder={"Perto da Praça..."}
               labelText="Observação: (opcional)"
               typeInput="text"
               isBox
@@ -118,15 +194,30 @@ export default function ModalGerPersonalInfos({
               }
             />
           </div>
-          <Buttom
-            tagHtml={"button"}
-            onClickButton={handleEndBuy}
-            text={"Finalizar Pedido"}
-            type={"primary"}
-            ariaLabel={"Cotinuar o pedido"}
-            direction="to-right"
-            className={styles.buttonModal}
-          />
+          <div className={styles.line}></div>
+          <div className={styles.inputNameTelContainer}>
+            <Buttom
+              tagHtml={"button"}
+              onClickButton={handleEndBuy}
+              text={"Finalizar Pedido"}
+              type={"primary"}
+              ariaLabel={"Realizar pedido"}
+              withSeta={false}
+              className={styles.buttonModal}
+            />
+            <Buttom
+              tagHtml={"button"}
+              onClickButton={() => {
+                new PedidoService().addProduto(pedido.itens[0].product);
+                onClose();
+              }}
+              text={"Finalizar Pedido"}
+              type={"secondary"}
+              ariaLabel={"Cotinuar compra"}
+              withSeta={false}
+              className={styles.buttonModal}
+            />
+          </div>
         </div>
       </div>
     </div>

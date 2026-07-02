@@ -1,8 +1,7 @@
 import styles from "./style.module.css";
-import { Product } from "@/app/types/product";
-
+//import { Product } from "@/app/types/product";
+//import { PersonalInfos } from "@/app/types/personalInfos";
 import { Pedido } from "@/app/types/pedido";
-import { PersonalInfos } from "@/app/types/personalInfos";
 import ProductSimpleListItem from "@/app/components/product-simple-list-item";
 import PersonalInfosListItem from "@/app/components/personal-infos-list-item";
 import Buttom from "@/app/components/buttom";
@@ -10,11 +9,13 @@ import Buttom from "@/app/components/buttom";
 interface ModalShowResumeProps {
   pedido: Pedido;
   onClose: () => void;
+  onFinalizaPedido: (pedido: Pedido) => void;
 }
 
 export default function ModalShowResume({
   pedido,
   onClose,
+  onFinalizaPedido,
 }: ModalShowResumeProps) {
   return (
     <div onClick={onClose} className={styles.bodyBackgroundModal}>
@@ -52,7 +53,7 @@ export default function ModalShowResume({
 
           <Buttom
             tagHtml={"button"}
-            onClickButton={onClose}
+            onClickButton={() => onFinalizaPedido(pedido)}
             text={"Finalizar Pedido"}
             type={"primary"}
             ariaLabel={"Finalizar Pedido"}

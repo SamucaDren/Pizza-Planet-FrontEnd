@@ -17,21 +17,35 @@ export default function NavBar() {
     useState<boolean>(false);
   const [showGetPersonalInfos, setShowGetPersonalInfos] =
     useState<Pedido | null>(null);
+  const [showResumeModal, setShowResumeModal] = useState<Pedido | null>(null);
 
   useEffect(() => {
-    document.body.style.overflow = isOpenDrawerCarrinho ? "hidden" : "";
-    document.documentElement.style.overflow = isOpenDrawerCarrinho
-      ? "hidden"
-      : "";
+    const isOverlayOpen =
+      isOpenDrawerCarrinho ||
+      showGetPersonalInfos !== null ||
+      showResumeModal !== null;
+
+    document.body.style.overflow = isOverlayOpen ? "hidden" : "";
+    document.documentElement.style.overflow = isOverlayOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     };
-  }, [isOpenDrawerCarrinho]);
+  }, [isOpenDrawerCarrinho, showGetPersonalInfos, showResumeModal]);
 
   return (
     <>
+      {showResumeModal && (
+        <ModalShowResume
+          pedido={showResumeModal}
+          onClose={() => setShowResumeModal(null)}
+          onFinalizaPedido={(pedido) => {
+            new PedidoService().finalizaPedidoFromCarrinho(pedido);
+            setShowResumeModal(null);
+          }}
+        />
+      )}
       {showGetPersonalInfos && (
         <ModalGetPersonalInfos
           pedido={showGetPersonalInfos}
@@ -39,9 +53,8 @@ export default function NavBar() {
             setShowGetPersonalInfos(null);
           }}
           onFinish={(pedido) => {
-            //setPedido(pedido);
-            //setProductModalisOpen(null);
-            //setShowModalModalIsOpen(true);
+            setShowGetPersonalInfos(null);
+            setShowResumeModal(pedido);
           }}
         />
       )}
